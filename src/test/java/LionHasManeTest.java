@@ -1,19 +1,23 @@
 import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 @RunWith(Parameterized.class)
-public class LionParamTest {
+public class LionHasManeTest {
 
+    @Mock
     Feline feline;
 
     private final String sex;
     private final boolean hasMane;
 
-    public LionParamTest(String sex, boolean hasMane) {
+    public LionHasManeTest(String sex, boolean hasMane) {
         this.sex = sex;
         this.hasMane = hasMane;
     }
@@ -26,9 +30,14 @@ public class LionParamTest {
         };
     }
 
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
+
     @Test
     public void presenceOfManeTest() throws Exception {
         Lion testLion = new Lion(feline, sex);
-        Assert.assertEquals(hasMane, testLion.doesHaveMane());
+        Assert.assertEquals("Ожидаемый результат не совпадает с фактическим", hasMane, testLion.doesHaveMane());
     }
 }
