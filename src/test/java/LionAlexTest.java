@@ -31,7 +31,7 @@ public class LionAlexTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        Mockito.when(objLionAlex.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Mockito.when(mockFeline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         Assert.assertEquals("Ожидаемый результат не совпадает с фактическим", expectedFood, objLionAlex.getFood());
     }

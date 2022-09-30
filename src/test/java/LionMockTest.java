@@ -17,7 +17,7 @@ public class LionMockTest {
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Mock
@@ -40,14 +40,14 @@ public class LionMockTest {
     @Test
     public void getKittensTest() throws Exception {
         Lion testLion = new Lion(mockFeline, sex);
-        Mockito.when(testLion.getKittens(5)).thenReturn(5);
-        Assert.assertEquals("Ожидаемый результат не совпадает с фактическим", 5, testLion.getKittens(5));
+        Mockito.when(mockFeline.getKittens()).thenReturn(1);
+        Assert.assertEquals("Ожидаемый результат не совпадает с фактическим", 1, testLion.getKittens());
     }
 
     @Test
     public void getFoodTest() throws Exception {
         Lion testLion = new Lion(mockFeline, sex);
-        Mockito.when(testLion.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Mockito.when(mockFeline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         Assert.assertEquals("Ожидаемый результат не совпадает с фактическим", expectedFood, testLion.getFood());
     }

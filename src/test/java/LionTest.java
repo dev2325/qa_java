@@ -19,6 +19,7 @@ public class LionTest {
     public void createNewLionUnknownGenderThrowsException() throws Exception {
         try {
             Lion unknownLion = new Lion(objFeline, "UnknownGender");
+            Assert.fail("Expected Exception");
         } catch (Exception thrown) {
             Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка", thrown.getMessage());
         }
